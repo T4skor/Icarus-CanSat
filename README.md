@@ -38,6 +38,7 @@ For Arduino-related files, upload the `.ino` scripts to the respective hardware 
 ## Contributing
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
+Consider to star this repo.
 
 ## License
 
