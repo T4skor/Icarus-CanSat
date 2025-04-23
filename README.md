@@ -55,7 +55,7 @@ Ensure your Arduino (or similar device) sends data in this format.
 
 ## 📝 Notes
 
-- The script was tested on Windows. If you're on Linux, replace `'COM6'` with something like `'/dev/ttyUSB0'`.
+- The script was tested on Windows and Linux. If you're on Linux, replace `'COM6'` with something like `'/dev/ttyUSB0'`.
 - The time value used is a simple index (`i`) incremented on each update. Use `time.time()` for real timestamps if needed.
 
 ## 🧑‍💻 Author
