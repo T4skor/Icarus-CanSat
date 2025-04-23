@@ -60,4 +60,4 @@ Ensure your Arduino (or similar device) sends data in this format.
 
 ## 🧑‍💻 Author
 
-Script developed by [T4skor](https://github.com/T4skor)
+Developed by [T4skor](https://github.com/T4skor)
