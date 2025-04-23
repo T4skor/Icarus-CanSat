@@ -1,49 +1,63 @@
+# Sensor Data Visualizer and Exporter via Serial Port
 
-# Icarus CanSat 2025 - IES Alonso Quijano
+This Python script reads real-time data from a microcontroller (e.g., Arduino) via serial port, processes it, dynamically visualizes it using `matplotlib`, and exports it to Excel (`.xlsx`) files with embedded charts using `openpyxl`.
 
-This repository contains the code and documentation for the 2025 CanSat project of IES Alonso Quijano. The CanSat mission aims to design and deploy a miniature satellite that performs various scientific experiments during its descent.
+## 📦 Dependencies
 
-## Project Overview
+Install the required libraries with:
 
-The project utilizes a combination of Python and C++ to handle data acquisition, satellite control, and communication systems. The main components include:
+```bash
+pip install pyserial matplotlib pandas openpyxl
+```
 
-- Python scripts for data analysis and control.
-- C++ code for sensor interaction and hardware communication.
+## 🔧 Configuration
 
-## Repository Structure
+Edit these lines according to your setup:
 
-- `main.py`: Primary Python script for satellite control and data handling.
-- `main.ino`: Arduino code for sensor control and data collection.
-- Additional `.ino` and `.py` files for secondary control systems and testing.
+```python
+port = 'COM6'       # Serial port connected to the microcontroller
+baudrate = 9600     # Communication speed (must match the microcontroller)
+```
 
-## Setup Instructions
+## 📈 Supported Sensors
 
-To run the project:
+The script currently supports two types of sensor data:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/T4skor/Icarus-CanSat.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Icarus-CanSat
-   ```
-3. Run the main Python script:
-   ```bash
-   python main.py
-   ```
+- **BMP280**: Sends **Temperature**, **Pressure**, and **Altitude** data.
+- **Magnetometer (e.g., HMC5883L)**: Sends **X**, **Y**, and **Z** magnetic field values in µT.
 
-For Arduino-related files, upload the `.ino` scripts to the respective hardware using the Arduino IDE.
+## 🎨 Features
 
-## Contributing
+- Real-time plots:
+  - Temperature vs Time
+  - Altitude vs Time
+  - Magnetometer (X, Y, Z) vs Time
+- Automatic saving of sensor data to `datos_sensores.xlsx`
+- Creation of `datos_sensores_con_graficas.xlsx` with:
+  - Full data table
+  - Embedded charts (Temperature, Altitude, Magnetometer)
 
-Contributions are welcome! Feel free to fork the repository and submit pull requests.
-Consider to star this repo.
+## 🧪 Expected Input Format (from Serial)
 
-## License
+The script uses regular expressions to identify lines like:
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+```plaintext
+Icarus: Temperature: 24.50 °C, Pressure: 1.02 atm, Altitude: 123.45 m
+Icarus: X: 50.23 µT Icarus: Y: -12.34 µT Icarus: Z: 4.56
+```
 
-## Contact
+Ensure your Arduino (or similar device) sends data in this format.
 
-For inquiries, contact T4skor.
+## 📂 Output Files
+
+- `datos_sensores.xlsx`: Raw data only
+- `datos_sensores_con_graficas.xlsx`: Data + embedded charts
+
+## 📝 Notes
+
+- The script was tested on Windows. If you're on Linux, replace `'COM6'` with something like `'/dev/ttyUSB0'`.
+- The time value used is a simple index (`i`) incremented on each update. Use `time.time()` for real timestamps if needed.
+
+## 🧑‍💻 Author
+
+Script developed by [T4skor]
