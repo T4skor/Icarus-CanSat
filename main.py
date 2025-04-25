@@ -10,8 +10,8 @@ from openpyxl.chart.series import Series
 from openpyxl.utils.dataframe import dataframe_to_rows  # Importa la función necesaria
 
 # Configuración del puerto serie
-puerto = 'COM6'  # Cambia al puerto correspondiente
-baudrate = 9600  # Debe coincidir con la configuración de Arduino
+puerto = 'COM6'
+baudrate = 9600
 
 try:
     ser = serial.Serial(puerto, baudrate)
